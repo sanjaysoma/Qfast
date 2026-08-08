@@ -1,0 +1,13 @@
+﻿{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "5d48c0f4-d7e6-4a45-ae18-90d390c2b180"
+      }
+    },
+    "android": {
+      "package": "com.soma323.Medvofrontend"
+    }
+  }
+}
+

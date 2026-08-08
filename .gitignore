@@ -1,0 +1,49 @@
+﻿# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Build/output
+dist/
+build/
+.expo/
+.expo-shared/
+
+# Logs
+*.log
+*.bin
+
+# Temporary files
+tmp-*
+*_log.txt
+*_log.bin
+*.tmp
+
+# IDE
+.vscode/
+# Uploaded user documents
+backend/QueueLess/backend/app/uploads/
+
+# Build and generated text files
+buildlog.txt
+eas-build-log*.txt
+prebuild-output.txt
+build-output.txt
+
+# Expo/EAS generated files
+*.bin
+expo-go-qr.png
+tmp_*

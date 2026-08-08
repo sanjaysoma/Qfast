@@ -1,0 +1,33 @@
+﻿{
+  "name": "Medvo-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "build-web-assets": "node scripts/build-web-assets.js",
+    "prebuild": "npm run build-web-assets",
+    "postinstall": "npm run build-web-assets",
+    "build:apk": "npm run build-web-assets && eas build --platform android --local"
+  },
+  "dependencies": {
+    "expo": "~51.0.0",
+    "expo-constants": "~16.0.2",
+    "expo-location": "~17.0.1",
+    "expo-notifications": "~0.28.19",
+    "expo-status-bar": "~1.12.0",
+    "expo-system-ui": "~3.0.7",
+    "react": "18.2.0",
+    "react-native": "0.74.5",
+    "react-native-webview": "13.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "babel-preset-expo": "~11.0.0"
+  },
+  "private": true
+}
+
