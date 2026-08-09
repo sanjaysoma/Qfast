@@ -46,7 +46,7 @@ if DATABASE_URL:
         if match:
             ref = match.group(1)
             pooler_host = SUPABASE_POOLER_HOST or "aws-0-ap-northeast-1.pooler.supabase.com"
-            pooler_port = SUPABASE_POOLER_PORT or "6543"
+            pooler_port = SUPABASE_POOLER_PORT or "5432"
             DATABASE_URL = re.sub(
                 rf"@db\.{ref}\.supabase\.co(?::\d+)?",
                 f"@{pooler_host}:{pooler_port}",
