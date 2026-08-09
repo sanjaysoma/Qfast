@@ -15,11 +15,13 @@ if (import.meta.env.PROD && (envBaseURL.includes("localhost") || envBaseURL.incl
   envBaseURL = "";
 }
 
+const DEFAULT_PROD_URL = "https://qfast-qtzi.onrender.com";
+
 const resolveBaseURL = () => {
   if (runtimeBaseURL) return runtimeBaseURL;
   if (envBaseURL) return envBaseURL;
   if (import.meta.env.DEV) return "http://localhost:8000";
-  return "";
+  return DEFAULT_PROD_URL;
 };
 
 const baseURL = resolveBaseURL();
