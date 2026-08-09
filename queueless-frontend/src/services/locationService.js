@@ -1,4 +1,4 @@
-﻿const getFallbackLocation = () => ({
+const getFallbackLocation = () => ({
   latitude: null,
   longitude: null,
   accuracy: null,
@@ -41,7 +41,7 @@ const getInjectedLocation = () => {
     return null;
   }
 
-  const candidate = window.__QFast_MOBILE_LOCATION__ || window.__Medvo_MOBILE_LOCATION__;
+  const candidate = window.__VDocQ_MOBILE_LOCATION__ || window.__QFast_MOBILE_LOCATION__ || window.__Medvo_MOBILE_LOCATION__;
   if (!candidate) {
     return null;
   }
@@ -78,6 +78,7 @@ const waitForInjectedLocation = (timeoutMs = 4000) => {
       if (settled) return;
       settled = true;
       window.clearTimeout(timerId);
+      window.removeEventListener("VDocQ-native-location", onNativeLocation);
       window.removeEventListener("QFast-native-location", onNativeLocation);
       window.removeEventListener("Medvo-native-location", onNativeLocation);
       resolve(value);
@@ -88,6 +89,7 @@ const waitForInjectedLocation = (timeoutMs = 4000) => {
     };
 
     const timerId = window.setTimeout(() => finish(null), timeoutMs);
+    window.addEventListener("VDocQ-native-location", onNativeLocation, { once: true });
     window.addEventListener("QFast-native-location", onNativeLocation, { once: true });
     window.addEventListener("Medvo-native-location", onNativeLocation, { once: true });
   });
@@ -102,7 +104,7 @@ export const getCurrentLocation = async (opts = {}) => {
   const preferInjectedMobile = opts.preferInjectedMobile !== false;
   const isMobileWebView =
     typeof window !== "undefined" &&
-    (typeof window.ReactNativeWebView !== "undefined" || typeof window.__QFast_LOCATION_ENABLED__ !== "undefined");
+    (typeof window.ReactNativeWebView !== "undefined" || typeof window.__VDocQ_LOCATION_ENABLED__ !== "undefined" || typeof window.__QFast_LOCATION_ENABLED__ !== "undefined");
 
   let injectedLocation = getInjectedLocation();
 

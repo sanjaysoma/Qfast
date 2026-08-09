@@ -1,4 +1,4 @@
-﻿import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getCurrentLocation, getCityFromCoordinates } from "../services/locationService";
 import { loadIndiaCities } from "../data/indiaCities";
@@ -195,8 +195,8 @@ function Navbar() {
       <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-2.5 md:gap-3">
         <div className="flex min-w-0 flex-col items-start gap-0.5 md:flex-row md:items-center md:gap-3">
           <Link to="/" className="flex min-w-0 shrink-0 items-center gap-1 font-bold text-white">
-            <img src={LogoImg} alt="QFast Logo" className="h-14 w-14 shrink-0 rounded-lg object-contain sm:h-16 sm:w-16 md:h-[4.5rem] md:w-[4.5rem]" />
-            <span className="text-[1rem] tracking-tight sm:text-[1.1rem] md:text-[1.25rem]">QFast</span>
+            <img src={LogoImg} alt="VDocQ Logo" className="h-14 w-14 shrink-0 rounded-lg object-contain sm:h-16 sm:w-16 md:h-[4.5rem] md:w-[4.5rem]" />
+            <span className="text-[1rem] tracking-tight sm:text-[1.1rem] md:text-[1.25rem]">VDocQ</span>
           </Link>
           <div className="flex min-w-0 items-start text-sm text-slate-300 md:items-center md:self-center">
             <CityDisplay />

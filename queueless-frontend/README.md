@@ -1,6 +1,6 @@
-# QFast Frontend
+# VDocQ Frontend
 
-Frontend app for QFast built with React + Vite.
+Frontend app for VDocQ built with React + Vite.
 
 ## Run Frontend
 

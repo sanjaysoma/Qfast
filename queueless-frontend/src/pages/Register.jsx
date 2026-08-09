@@ -203,7 +203,7 @@ function Register() {
                 </button>
 
                 <h1 className="text-3xl font-bold">
-                    <span className="text-blue-500">QFast</span>{" "}Register
+                    <span className="text-blue-500">VDocQ</span>{" "}Register
                 </h1>
 
                 <p className="text-gray-500 mt-2">

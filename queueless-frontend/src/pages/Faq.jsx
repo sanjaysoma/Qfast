@@ -1,12 +1,12 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Faq() {
   return (
     <div className="min-h-screen bg-gray-50 py-10">
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">About QFast</h1>
+        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">About VDocQ</h1>
         <p className="mt-4 max-w-3xl text-gray-700">
-          QFast is a digital healthcare assistant that helps you find doctors, hospitals,
+          VDocQ is a digital healthcare assistant that helps you find doctors, hospitals,
           and available appointments quickly. Our mission is to reduce waiting time, simplify
           bookings, and deliver better access to care across cities.
         </p>
@@ -24,7 +24,7 @@ function Faq() {
             <div>
               <h3 className="font-semibold">Can I choose a hospital in another city?</h3>
               <p className="mt-1">
-                Yes. QFast allows you to search by city and specialization so you can book care where it is most convenient.
+                Yes. VDocQ allows you to search by city and specialization so you can book care where it is most convenient.
               </p>
             </div>
             <div>

@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import API from "../api/axios";
 
@@ -98,7 +98,7 @@ export default function Login() {
 
                 {/* Heading */}
 
-                <h1 className="text-3xl font-bold"><span className="text-blue-500">QFast</span>{" "}Login</h1>
+                <h1 className="text-3xl font-bold"><span className="text-blue-500">VDocQ</span>{" "}Login</h1>
 
                 <p className="text-gray-500 mt-2">
 

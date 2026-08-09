@@ -1,4 +1,4 @@
-﻿from fastapi import FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import DB_INIT_ON_STARTUP, DB_REQUIRED_ON_STARTUP, USE_FIREBASE_DATABASE
@@ -34,15 +34,16 @@ else:
 
         Base.metadata.create_all(bind=engine)
 
-        with engine.begin() as conn:
-            conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS google_maps_link VARCHAR(1024);"))
-            conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS district VARCHAR(255);"))
-            conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS pincode VARCHAR(32);"))
-            conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS latitude DOUBLE PRECISION;"))
-            conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS longitude DOUBLE PRECISION;"))
-            conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS dmho_certificate_path VARCHAR(1024);"))
-            conn.execute(text("ALTER TABLE appointments ADD COLUMN IF NOT EXISTS rating INTEGER;"))
-            conn.execute(text("ALTER TABLE doctors ADD COLUMN IF NOT EXISTS medical_council_registration_number VARCHAR(255);"))
+        if engine.dialect.name != "sqlite":
+            with engine.begin() as conn:
+                conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS google_maps_link VARCHAR(1024);"))
+                conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS district VARCHAR(255);"))
+                conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS pincode VARCHAR(32);"))
+                conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS latitude DOUBLE PRECISION;"))
+                conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS longitude DOUBLE PRECISION;"))
+                conn.execute(text("ALTER TABLE hospitals ADD COLUMN IF NOT EXISTS dmho_certificate_path VARCHAR(1024);"))
+                conn.execute(text("ALTER TABLE appointments ADD COLUMN IF NOT EXISTS rating INTEGER;"))
+                conn.execute(text("ALTER TABLE doctors ADD COLUMN IF NOT EXISTS medical_council_registration_number VARCHAR(255);"))
 
         print("Tables created successfully!")
 
@@ -53,7 +54,7 @@ else:
 
 app = FastAPI(
 
-    title="QFast API",
+    title="VDocQ API",
 
     version="1.0.0"
 )
@@ -190,7 +191,7 @@ if not USE_FIREBASE_DATABASE:
 @app.get("/")
 async def root():
 
-    return {"message": "Welcome to QFast API"}
+    return {"message": "Welcome to VDocQ API"}
 
 
 @app.get("/db-test")

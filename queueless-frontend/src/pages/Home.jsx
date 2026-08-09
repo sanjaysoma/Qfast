@@ -1,10 +1,11 @@
-﻿import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCurrentLocation, getCityFromCoordinates } from "../services/locationService";
 import SpecialtyGrid from "../components/SpecialtyGrid";
 import { getHospitalsByCity, getNearbyHospitals } from "../services/hospitalService";
 import Logo from "../assets/icon.png";
 import HeroBg from "../assets/hero.png";
+import ImaLogo from "../assets/ima_logo.png";
 import DISTRICTS from "../data/indiaDistricts";
 
 const CITY_OPTIONS = DISTRICTS;
@@ -203,10 +204,10 @@ function Home() {
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-6">
             <div className="space-y-2 text-center lg:text-left">
               <div className="flex flex-col items-center gap-0 sm:flex-row sm:items-center lg:justify-start">
-                <img src={Logo} alt="QFast logo" className="h-28 w-auto max-w-[10rem] sm:h-28 sm:max-w-[9.5rem] lg:h-32 lg:max-w-[10.5rem]" />
+                <img src={Logo} alt="VDocQ logo" className="h-28 w-auto max-w-[10rem] sm:h-28 sm:max-w-[9.5rem] lg:h-32 lg:max-w-[10.5rem]" />
                 <div>
                   <h1 className="text-2xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                    QFast
+                    VDocQ
                   </h1>
                 </div>
               </div>
@@ -304,58 +305,72 @@ function Home() {
         </section>
       </main>
 
-      <footer className="bg-[#020b2f] py-14 text-slate-200">
+      <footer className="bg-[#020b2f] py-12 text-slate-200">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div>
-            <div className="flex items-center gap-2">
-              <img src={Logo} alt="QFast Logo" className="h-12 w-12 shrink-0" />
-              <h4 className="text-xl font-semibold text-white">QFast</h4>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 items-start">
+            {/* Column 1: Brand */}
+            <div className="flex flex-col items-start">
+              <div className="flex items-center gap-2">
+                <img src={Logo} alt="VDocQ Logo" className="h-12 w-12 shrink-0" />
+                <h4 className="text-xl font-semibold text-white">VDocQ</h4>
+              </div>
+              <p className="mt-2 text-sm text-slate-400">Your Time. Our Priority.</p>
+              <p className="mt-4 text-[11px] text-slate-400 sm:text-xs">© 2026 VDocQ. All rights reserved.</p>
             </div>
-            <p className="mt-2 text-sm">Your Time. Our Priority.</p>
-          </div>
 
-          <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-3">
-            <div>
+            {/* Column 2: Quick Links */}
+            <div className="flex flex-col items-start">
               <h4 className="text-sm font-semibold text-white sm:text-base">Quick Links</h4>
-              <ul className="mt-2 space-y-1 text-xs sm:text-sm">
-                <li><Link to="/" className="text-gray-300">Home</Link></li>
-                <li><Link to={doctorsLinkDestination} className="text-gray-300">Doctors</Link></li>
-                <li><Link to={hospitalsLinkDestination} className="text-gray-300">Hospitals</Link></li>
-                <li><Link to="/#specializations" className="text-gray-300">Specializations</Link></li>
+              <ul className="mt-3 space-y-2 text-xs sm:text-sm">
+                <li><Link to="/" className="text-gray-300 hover:text-white transition">Home</Link></li>
+                <li><Link to={doctorsLinkDestination} className="text-gray-300 hover:text-white transition">Doctors</Link></li>
+                <li><Link to={hospitalsLinkDestination} className="text-gray-300 hover:text-white transition">Hospitals</Link></li>
+                <li><Link to="/#specializations" className="text-gray-300 hover:text-white transition">Specializations</Link></li>
               </ul>
             </div>
 
-            <div>
-              <h4 className="text-sm font-semibold text-white sm:text-base">Support</h4>
-              <ul className="mt-2 space-y-1 text-xs sm:text-sm">
-                <li><Link to="/faq" className="text-gray-300">About Us and FAQs</Link></li>
-                <li><Link to="/privacy" className="text-gray-300">Privacy Policy</Link></li>
-                <li><Link to="/terms" className="text-gray-300">Terms & Conditions</Link></li>
+            {/* Column 3: Support */}
+            <div className="flex flex-col items-start">
+              <h4 className="text-sm font-semibold text-white sm:text-base">Support & Contact</h4>
+              <ul className="mt-3 space-y-2 text-xs sm:text-sm">
+                <li><Link to="/faq" className="text-gray-300 hover:text-white transition">About Us and FAQs</Link></li>
+                <li><Link to="/privacy" className="text-gray-300 hover:text-white transition">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-gray-300 hover:text-white transition">Terms & Conditions</Link></li>
               </ul>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-semibold text-white sm:text-base">Contact</h4>
-              <p className="mt-2 text-xs sm:text-sm">Follow us on social media</p>
-              <a
-                href="https://www.instagram.com/QFast___01/"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="mt-3 inline-flex items-center gap-2 rounded-lg bg-white/10 px-3 py-2 text-xs text-white transition hover:bg-white/20 sm:text-sm"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-pink-400"
-                  aria-hidden="true"
+              <div className="mt-4">
+                <a
+                  href="https://www.instagram.com/VDocQ___01/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3 py-1.5 text-xs text-white transition hover:bg-white/20 sm:text-sm"
                 >
-                  <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5z" />
-                  <path d="M12 7.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5z" />
-                  <path d="M17.75 6.208a.792.792 0 1 1 0 1.584.792.792 0 0 1 0-1.584z" />
-                </svg>
-                Instagram
-              </a>
-              <p className="mt-2 text-[11px] sm:text-xs">© 2026 QFast. All rights reserved.</p>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-4 w-4 text-pink-400"
+                    aria-hidden="true"
+                  >
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5z" />
+                    <path d="M12 7.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5z" />
+                    <path d="M17.75 6.208a.792.792 0 1 1 0 1.584.792.792 0 0 1 0-1.584z" />
+                  </svg>
+                  Instagram
+                </a>
+              </div>
+            </div>
+
+            {/* Column 4: Indian Medical Association Logo */}
+            <div className="flex flex-col items-start">
+              <div className="rounded-xl bg-white p-2 shadow-md flex justify-center items-center">
+                <img
+                  src={ImaLogo}
+                  alt="Indian Medical Association"
+                  className="h-24 w-auto object-contain transition-transform hover:scale-105"
+                />
+              </div>
+              <p className="mt-2.5 text-[10px] font-bold uppercase tracking-wider text-cyan-400">Launched By</p>
+              <h5 className="mt-0.5 text-xs font-bold text-white leading-tight">Indian Medical Association</h5>
+              <span className="mt-1 inline-block rounded-full bg-cyan-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-cyan-300 border border-cyan-500/20">ESTD 1928</span>
             </div>
           </div>
         </div>

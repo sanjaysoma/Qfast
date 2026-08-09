@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Privacy() {
   return (
@@ -6,7 +6,7 @@ function Privacy() {
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">Privacy Policy</h1>
         <p className="mt-4 max-w-3xl text-gray-700">
-          QFast is committed to protecting your privacy. We collect only the information needed
+          VDocQ is committed to protecting your privacy. We collect only the information needed
           to provide appointment search and booking services, including location data when you choose to share it.
         </p>
 
@@ -21,7 +21,7 @@ function Privacy() {
           <div>
             <h2 className="text-2xl font-semibold text-slate-900">How we use your information</h2>
             <p className="mt-1">
-              Your data is used to improve search results, manage bookings, and personalize your experience on QFast.
+              Your data is used to improve search results, manage bookings, and personalize your experience on VDocQ.
               We never sell your personal information to third parties.
             </p>
           </div>

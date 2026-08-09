@@ -1,31 +1,28 @@
-﻿import axios from "axios";
-
-const getOriginBasedBackendURL = () => {
-  if (typeof window === "undefined" || !window.location?.hostname) {
-    return "";
-  }
-
-  const { hostname, protocol } = window.location;
-  if (!hostname || hostname === "localhost" || hostname === "127.0.0.1") {
-    return "";
-  }
-
-  const backendProtocol = protocol === "https:" ? "https:" : "http:";
-  return `${backendProtocol}//${hostname}:8000`;
-};
+import axios from "axios";
 
 const runtimeBaseURL =
-  (typeof window !== "undefined" && window.__QFast_API_BASE_URL__) ||
+  (typeof window !== "undefined" && (window.__VDocQ_API_BASE_URL__ || window.__QFast_API_BASE_URL__)) ||
   (typeof window !== "undefined" && window.localStorage?.getItem("api_base_url")) ||
   "";
 
-const envBaseURL = import.meta.env.VITE_API_BASE_URL || "";
+let envBaseURL = import.meta.env.VITE_API_BASE_URL || "";
 
-const baseURL =
-  runtimeBaseURL ||
-  envBaseURL ||
-  getOriginBasedBackendURL() ||
-  (import.meta.env.DEV ? "http://localhost:8000" : "https://your-production-api.com");
+// In production, ignore localhost URLs that were accidentally baked into build from local .env
+if (import.meta.env.PROD && (envBaseURL.includes("localhost") || envBaseURL.includes("127.0.0.1"))) {
+  console.warn(
+    "[VDocQ API] Localhost VITE_API_BASE_URL ignored in production. Please set VITE_API_BASE_URL to your live backend server URL."
+  );
+  envBaseURL = "";
+}
+
+const resolveBaseURL = () => {
+  if (runtimeBaseURL) return runtimeBaseURL;
+  if (envBaseURL) return envBaseURL;
+  if (import.meta.env.DEV) return "http://localhost:8000";
+  return "";
+};
+
+const baseURL = resolveBaseURL();
 
 const API = axios.create({
   baseURL,
