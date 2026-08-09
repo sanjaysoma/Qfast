@@ -32,6 +32,21 @@ DB_SSLMODE = os.getenv("DB_SSLMODE", "require").strip()
 DATABASE_URL = os.getenv("DATABASE_URL")
 USE_FIREBASE_DATABASE = _env_flag("USE_FIREBASE_DATABASE", "false")
 
+import re
+if DATABASE_URL and ".supabase.co" in DATABASE_URL:
+    match = re.search(r"@db\.([a-z0-9]+)\.supabase\.co(?::\d+)?", DATABASE_URL)
+    if match:
+        ref = match.group(1)
+        pooler_host = SUPABASE_POOLER_HOST or "aws-0-ap-northeast-1.pooler.supabase.com"
+        pooler_port = SUPABASE_POOLER_PORT or "6543"
+        DATABASE_URL = re.sub(
+            rf"@db\.{ref}\.supabase\.co(?::\d+)?",
+            f"@{pooler_host}:{pooler_port}",
+            DATABASE_URL
+        )
+        if "://postgres:" in DATABASE_URL:
+            DATABASE_URL = DATABASE_URL.replace("://postgres:", f"://postgres.{ref}:")
+
 if not DATABASE_URL and USER and PASSWORD and HOST and PORT and DBNAME:
     encoded_user = quote_plus(USER)
     encoded_password = quote_plus(PASSWORD)
