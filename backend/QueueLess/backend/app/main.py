@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -82,8 +83,6 @@ def startup_database_init() -> None:
         _initialize_database()
     except Exception as exc:
         print(f"Database startup initialization notice: {exc}")
-        if DB_REQUIRED_ON_STARTUP and not os.getenv("RENDER"):
-            raise
         print("Web server startup continuing normally...")
 
 
