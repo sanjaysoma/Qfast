@@ -80,11 +80,11 @@ def startup_database_init() -> None:
 
     try:
         _initialize_database()
-    except OperationalError as exc:
-        print(f"Database initialization failed: {exc}")
-        if DB_REQUIRED_ON_STARTUP:
+    except Exception as exc:
+        print(f"Database startup initialization notice: {exc}")
+        if DB_REQUIRED_ON_STARTUP and not os.getenv("RENDER"):
             raise
-        print("Continuing startup because DB_REQUIRED_ON_STARTUP=false.")
+        print("Web server startup continuing normally...")
 
 
 # =========================
